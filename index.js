@@ -53,6 +53,7 @@ const ownerNumber = ["6281215524272@s.whatsapp.net","6281215524272@s.whatsapp.ne
        
 /*********** LOAD FILE ***********/
 const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
+const antilink = JSON.parse(fs.readFileSync('./database/group/antilink.json'))
 const _level = JSON.parse(fs.readFileSync('./database/user/level.json'))
 const _registered = JSON.parse(fs.readFileSync('./database/bot/registered.json'))
 const welkom = JSON.parse(fs.readFileSync('./database/bot/welkom.json'))
@@ -459,6 +460,29 @@ client.on('group-participants-update', async (anu) => {
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			
 			switch(command) {
+					case 'antilink':
+					if (!isRegistered) return reply(ind.noregis())
+                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
+                                        if (!isGroup) return reply(ind.groupo())
+					if (!isBotGroupAdmins) return reply(ind.badmin())
+                                        reply(ind.wait())
+					if (args.length < 1) return reply('pilih enable atau disable senpai')
+					if (Number(args[0]) === enable) {
+						if (isAntiLink) return reply('anti link group sudah aktif di group ini')
+						antilink.push(from)
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+						reply('Sukses mengaktifkan anti link group di group ini ✔️')
+						client.sendMessage(from,`Perhatian kepada seluruh member anti link group aktif apabila anda mengirim link group anda akan di kick dari group`, text)
+					} else if (Number(args[0]) === disable) {
+						if (!isantilink) return reply('Mode anti link group sudah Tidak aktif di group ini')
+						var ini = anti.indexOf(from)
+						antilink.splice(ini, 1)
+						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+						reply('Sukes menonaktifkan anti link group di group ini ✔️')
+					} else {
+						reply('enable untuk mengaktifkan, disable untuk menonaktifkan')
+					}
+					break
 					case 'oadd':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerb())
