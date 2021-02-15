@@ -460,6 +460,61 @@ client.on('group-participants-update', async (anu) => {
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			
 			switch(command) {
+					
+
+	
+
+	
+
+					profil = await client.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+
+					} catch {
+
+					profil = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+
+					}
+
+					 profile = `╭─「 *PROFILE ANDA* 」\n│• *Name:* ${pushname2}\n│• *User Terdaftar:* ✅\n│• *Link:* wa.me/${sender.split("@")[0]}\n╰─────────────────────`
+
+					buff = await getBuffer(profil)
+
+					client.sendMessage(from, buff, image, {quoted: mek, caption: profile})
+
+					await limitAdd(sender)
+
+					break
+
+					case 'watak':
+
+                     if (isLimit(sender)) return reply(ind.limitend(pusname))
+
+					watak = body.slice(1)
+
+					wa =["penyayang","pemurah","Pemarah","Pemaaf","Penurut","Baik","baperan","Baik Hati","penyabar","Uwu","top deh, pokoknya","Suka Membantu"]
+
+					const tak = wa[Math.floor(Math.random() * wa.length)]
+
+					client.sendMessage(from, 'Pertanyaan : *'+watak+'*\n\nJawaban : '+ tak, text, { quoted: mek })
+
+					await limitAdd(sender)
+
+					break 
+
+				case 'hobby':
+
+				if (isLimit(sender)) return reply(ind.limitend(pusname))
+
+					hobby = body.slice(1)
+
+					hob =["Memasak","Membantu Atok","Mabar","Nobar","Sosmed an","Membantu Orang lain","Nonton Anime","Nonton Drakor","Naik Motor","Nyanyi","Menari","Bertumbuk","Menggambar","Foto fotoan Ga jelas","Maen Game","Berbicara Sendiri"]
+
+					const by = hob[Math.floor(Math.random() * hob.length)]
+
+					client.sendMessage(from, 'Pertanyaan : *'+hobby+'*\n\nJawaban : '+ by, text, { quoted: mek })
+
+					await limitAdd(sender)
+
+					break
 					case 'antilink':
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         if (!isGroup) return reply(ind.groupo())
