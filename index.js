@@ -511,6 +511,7 @@ client.on('group-participants-update', async (anu) => {
 					case 'nsfwneko':
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         if (!isGroup) return reply(ind.groupo())
+					if (!isNsfw) return reply(ind.nsfwoff())
                                         reply(ind.wait())
 				    try{
 						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nsfwneko?apikey=BotWeA`, {method: 'get'})
@@ -1266,6 +1267,7 @@ client.on('group-participants-update', async (anu) => {
             break
 				case 'transfer':
 				case 'tranfer':
+				if (!isRegistered) return reply(ind.noregis())	
 				if (!q.includes('|')) return  reply(ind.wrongf())
                 const tujuan = q.substring(0, q.indexOf('|') - 1)
                 const jumblah = q.substring(q.lastIndexOf('|') + 1)
@@ -1281,10 +1283,12 @@ client.on('group-participants-update', async (anu) => {
                 reply(`*「 SUKSES 」*\n\npengiriman uang telah sukses\ndari : +${sender.split("@")[0]}\nke : +${tujuan}\njumblah transfer : ${jumblah}\npajak : ${fee}`)
                 break
 				case 'dompet':
+				if (!isRegistered) return reply(ind.noregis())	
 				const kantong = checkATMuser(sender)
 				reply(ind.uangkau(pushname, sender, kantong))
 				break
 				case 'buylimit':
+				if (!isRegistered) return reply(ind.noregis())	
 				payout = body.slice(10)
 				if(isNaN(payout)) return await reply('limit harus berupa angka!!')
 				const koinPerlimit = 300
@@ -1409,6 +1413,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'sticker':
 				case 's':
 				case 'stickergif':
+					
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
                     await limitAdd(sender)
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
@@ -1559,6 +1564,7 @@ client.on('group-participants-update', async (anu) => {
 					}
 				break 
 				case 'level':
+					
                 if (!isRegistered) return reply(ind.noregis())
                 if (!isLevelingOn) return reply(ind.lvlnoon())
                 if (!isGroup) return reply(ind.groupo())
