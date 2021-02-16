@@ -116,16 +116,16 @@ exports.reglevelahf = (command, pushname, getLevelingLevel, sender, ahf) => {
 
 exports.menu = (pushname, prefix, getLevelingLevel, getLevelingXp, sender, reqXp, _registered, uangku, role) => { 
 	return `
-┏━━━⊱   *ABOUT SENPAI*    ⊰━━━━━━┓
+┏━━━⊱ *ABOUT SENPAI* ⊰━━┓
 ┃
 ┃   Hai ${pushname}  wa.me/${sender.split("@")[0]}
 ┃   Namaku adalah *AZKABOT*
 ┃   Version : 4.5
 ┃   Prefix   : ${prefix}
 ┃
-┃       *pasti mau nyuruh kan 🐦*
+┃   *pasti mau nyuruh kan 🐦*
 ┃ 
-┗━━━⊱  ⸨ *AZKABOT* ⸩  ⊰━━━━━━━┛
+┗━━━⊱ ⸨ *AZKABOT* ⸩ ⊰━━┛
 
             📵 *CALL/VC = BLOCK*
             🚫 *SPAM  = BLOCK*
