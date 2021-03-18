@@ -3,8 +3,8 @@
 
 ## Cloning
 ```sh
-git clone https://github.com/BotWAIndo/selfbot-baileys.git
-cd selfbot-baileys
+git clone https://github.com/mroy-25/azka-selepbot.git
+cd azka-selepbot
 ```
 
 ## Installation Termux or Ubuntu/Debian
